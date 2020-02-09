@@ -1,4 +1,5 @@
-﻿using AlgorithmsAndDataStructures.DataStructures;
+﻿using AlgorithmsAndDataStructures.Algorithms;
+using AlgorithmsAndDataStructures.DataStructures;
 using System;
 using System.Globalization;
 using System.Linq;
@@ -13,6 +14,29 @@ namespace AlgorithmsAndDataStructures
             oneDimensionArray();
             multiDimensionArray();
             jaggedArray();
+
+            //SELECTION SORT
+            int[] integerValues = { -11, 12, -42, 0, 1, 90, 58, 6, -9};
+            SelectionSort.Sort(integerValues);
+            Console.WriteLine(string.Join(" | ", integerValues));    //JOIN ALL ELEMENTS FORM THE ARRAY
+            Console.WriteLine();
+
+            string[] stringValues = { "Maria", "Marcin", "Anna", "Jakub", "Jerzy", "Nikola" };
+            SelectionSort.Sort(stringValues);
+            Console.WriteLine(string.Join(" | ", stringValues));
+            Console.WriteLine();
+
+            //INSERTION SORT
+            int[] otherValues = { 8, 1, 5, -4, -5, 22, -13 };
+            InsertionSort.Sort(otherValues);
+            Console.WriteLine(string.Join(" | ", otherValues));
+            Console.WriteLine();
+
+            //BUBBLE SORT
+            int[] someValues = { 22, 1, -5, -4, -4, 2, 8, 5 };
+            BubbleSort.Sort(someValues);
+            Console.WriteLine(string.Join(" | ", someValues));
+            Console.WriteLine();
 
             Console.ReadKey();
         }
@@ -123,6 +147,6 @@ namespace AlgorithmsAndDataStructures
             return names;
         }
 
-
+        
     }
 }
