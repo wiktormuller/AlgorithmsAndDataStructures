@@ -38,10 +38,15 @@ namespace AlgorithmsAndDataStructures
             Console.WriteLine(string.Join(" | ", someValues));
             Console.WriteLine();
 
+            //QUICK SORT
+            int[] differentValues = { 0, 2, -3, 18, -18, 15, 6, 7};
+            QuickSort.Sort(differentValues);
+            Console.WriteLine(string.Join(" | ", differentValues));
+
             Console.ReadKey();
         }
 
-        public static void oneDimensionArray()  //NAME OF DAYS IN ACTUAL MONTH
+        public static void oneDimensionArray()  //NAME OF DAYS IN ACTUAL MONTH (CANNOT CHANGE LENGTH OF ANY ARRAY)
         {
             string[] days = new string[7];
 
