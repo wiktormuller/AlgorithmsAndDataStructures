@@ -1,6 +1,8 @@
 ﻿using AlgorithmsAndDataStructures.Algorithms;
 using AlgorithmsAndDataStructures.DataStructures;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -42,6 +44,89 @@ namespace AlgorithmsAndDataStructures
             int[] differentValues = { 0, 2, -3, 18, -18, 15, 6, 7};
             QuickSort.Sort(differentValues);
             Console.WriteLine(string.Join(" | ", differentValues));
+            Console.WriteLine();
+
+
+            //ARRAY LIST - IT IS COLLECTION WHERE TYPE IS OBJECT (IS NOT STRONGLY TYPED)
+            ArrayList arrayList = new ArrayList();
+            arrayList.Add(5);
+            arrayList.AddRange(new int[] { 6, 3, 8 });
+            arrayList.AddRange(new object[] { "Jakub", "Krzysztof" });
+            arrayList.Insert(5, 7.9);
+            arrayList.Remove(5);
+            int arrayValue = (int)arrayList[2];
+            Console.WriteLine(arrayValue);
+            int arrayCount = arrayList.Count;   //NUMBER OF ELEMENTS IN LIST
+            int arrayCapacity = arrayList.Capacity; //SIZE OF LIST WITH SPACE FOR FUTURE VALUES
+            bool containsJakub = arrayList.Contains("Jakub");   //CHECK IF THE POSITION OF VALUES
+            int whichIndex = arrayList.IndexOf(5);  //CHECK THE POSITION WHERE THE VALUES IS (IF NOT THEN RETURN -1)
+            Console.WriteLine();
+
+
+            //GENERIC LIST (IS STRONGLY TYPED)
+            //AVERAGE VALUE
+            List<double> numbers = new List<double>();
+            do
+            {
+                Console.Write("Insert the value: ");
+                string numberString = Console.ReadLine();
+                if (!double.TryParse(numberString, NumberStyles.Float, new NumberFormatInfo(), out double number))
+                {
+                    break;
+                }
+                numbers.Add(number);
+                Console.WriteLine($"Average value: {numbers.Average()}");
+            }
+            while (true);
+            Console.WriteLine();
+
+
+            //GENERIC LIST
+            //LIST OF PEOPLE
+            List<Person> people = new List<Person>();
+            people.Add(new Person() { Name = "Marcin", Age = 29, Country = CountryEnum.DE });
+            people.Add(new Person() { Name = "Sabina", Age = 18, Country = CountryEnum.PL });
+            people.Add(new Person() { Name = "Anna", Age = 25, Country = CountryEnum.UK });
+            List<Person> results = people.OrderBy(p => p.Name).ToList();
+
+            foreach(Person person in results)
+            {
+                Console.WriteLine($"{person.Name} (age {person.Age}) from {person.Country}.");
+            }
+            Console.WriteLine();
+
+
+            //SORTED LIST - IT IS KEY-VALUE PAIRS (WHERE KEY HAVE TO BE UNIQUE)
+            //ADDRESS BOOK - WHERE VALUES ARE AUTOMATICLY SORTED BY THEM KEYS
+            SortedList<string, Person> addresses = new SortedList<string, Person>();
+            addresses.Add("Marcin", new Person() { Name = "Marcin",  Age = 29, Country = CountryEnum.DE });
+            addresses.Add("Sabina", new Person() { Name = "Sabina", Age = 18, Country = CountryEnum.PL });
+            addresses.Add("Anna", new Person() { Name = "Anna", Age = 25, Country = CountryEnum.UK });
+
+            foreach (var address in addresses)  //WHY KEYPAIRVALUE DOES NOT WORK???
+            {
+                Console.WriteLine($"{address.Value.Name} (age {address.Value.Age}) from {address.Value.Country}.");
+            }
+            Console.WriteLine();
+
+
+            //LIKED LIST - THERE IS SINGLE OR DOUBLE LINKED LIST WHERE WE CAN USE THE NEXT OR PREVIOUS PROPERTY
+            //EBOOK READER
+            Page pageFirst = new Page() { Content = "Nowadays..." };
+            Page pageSecond = new Page() { Content = "Elaboration of that..." };
+            Page pageThird = new Page() { Content = "A huge number of..." };
+            Page pageFourth = new Page() { Content = "Do you know..." };
+            Page pageFifth = new Page() { Content = "Let's consider..." };
+            Page pageSixth = new Page() { Content = "Do you aware..." };
+            LinkedList<Page> pages = new LinkedList<Page>();
+            pages.AddLast(pageSecond);
+            LinkedListNode<Page> nodePageFourth = pages.AddLast(pageFourth);
+            pages.AddLast(pageSixth);
+            pages.AddFirst(pageFirst);
+            pages.AddBefore(nodePageFourth, pageThird);
+            pages.AddAfter(nodePageFourth, pageFifth);
+
+            //CIRCULAR LINKED LIST
 
             Console.ReadKey();
         }
