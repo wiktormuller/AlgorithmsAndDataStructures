@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace AlgorithmsAndDataStructures
 {
@@ -127,6 +128,68 @@ namespace AlgorithmsAndDataStructures
             pages.AddAfter(nodePageFourth, pageFifth);
 
             //CIRCULAR LINKED LIST
+            CircularLinkedList<string> categories = new CircularLinkedList<string>();
+            categories.AddLast("Sport");
+            categories.AddLast("Kultura");
+            categories.AddLast("Historia");
+            categories.AddLast("Geografia");
+            categories.AddLast("Ludzie");
+            categories.AddLast("Technologia");
+            categories.AddLast("Przyroda");
+            categories.AddLast("Fizyka");
+
+            Random random = new Random();
+            int totalTime = 0;
+            int remainingTime = 0;
+            foreach(string category in categories)
+            {
+                if(remainingTime <= 0)
+                {
+                    Console.WriteLine("Press [Enter] to start or other key to leave.");
+                    switch(Console.ReadKey().Key)
+                    {
+                        case ConsoleKey.Enter:
+                            totalTime = random.Next(1000, 5000);
+                            remainingTime = totalTime;
+                            break;
+                        default:
+                            return;
+                    }
+                }
+                int categoryTime = (-450 * remainingTime) / (totalTime - 50) + 500 + (22500 / (totalTime - 50));
+                remainingTime -= categoryTime;
+                Thread.Sleep(categoryTime);
+
+                Console.ForegroundColor = remainingTime <= 0 ? ConsoleColor.Red : ConsoleColor.Gray;
+                Console.WriteLine(category);
+                Console.ForegroundColor = ConsoleColor.Gray;
+            }
+
+
+            //STACK
+            //REVERSE THE WORD
+            Stack<char> chars = new Stack<char>();
+            foreach(char c in "WORD")
+            {
+                chars.Push(c);
+            }
+            while(chars.Count > 0)
+            {
+                Console.Write(chars.Pop());
+            }
+
+
+            //QUEUE
+            //JOB QUEUE
+            Queue<string> tasks = new Queue<string>();
+            tasks.Enqueue("Make a website");
+            tasks.Enqueue("Code review");
+            tasks.Enqueue("Deplyment");
+
+            foreach(string task in tasks)
+            {
+                Console.WriteLine(tasks.Dequeue());
+            }
 
             Console.ReadKey();
         }
