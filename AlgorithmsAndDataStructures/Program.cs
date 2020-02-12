@@ -168,6 +168,7 @@ namespace AlgorithmsAndDataStructures
 
             //STACK
             //REVERSE THE WORD
+            //STACK AND LIST ARE LIMITED ACCESS DATA STRUCTURES
             Stack<char> chars = new Stack<char>();
             foreach(char c in "WORD")
             {
@@ -189,6 +190,81 @@ namespace AlgorithmsAndDataStructures
             foreach(string task in tasks)
             {
                 Console.WriteLine(tasks.Dequeue());
+            }
+
+
+            //HASH TABLE
+            Hashtable phoneBook = new Hashtable()
+            {
+                {"Marcin Jamro", "000-000-000" },
+                {"Jan Kowalski", "111-111-111" }
+            };
+            phoneBook["Liliana Kowalska"] = "333-333-333";
+            string hashValue = (string)phoneBook["Jan Kowalski"];   //THE CAST IS NECCESSARY BECAUSE HASHTABLE REPRESENT NONGENERIC VARIANT OF ARRAY WITH HASHTABLE
+            Console.WriteLine($"Hashtable value: {hashValue}");
+
+
+            //DICTIONARY
+            //IT IS A GENERIC VERSION OF HASHTABLE
+            Dictionary<string, string> dictionary = new Dictionary<string, string>()
+            {
+                {"Key 1", "Value 1" },
+                {"Key 2", "Value 2" }
+            };
+            dictionary.Add("Key 3", "Value 3");
+            string dictionaryValue = dictionary["Key 1"];
+            Console.WriteLine($"Dictionary value: {dictionaryValue}");
+
+            foreach(KeyValuePair<string, string> pair in dictionary)
+            {
+                Console.WriteLine($"{pair.Key} - {pair.Value}");
+            }
+
+
+            //SORTED DICTIONARY
+            //SIMILAR TO SORTEDLIST BUT THE SORTED DICTIONARY IS FASTER WHEN WE ADD OR REMOVE ELEMENTS
+            SortedDictionary<string, string> definitions = new SortedDictionary<string, string>()
+            {
+                { "New York", "This is the city in the USA"},
+                { "Warsaw", "This is city in Poland"},
+                { "London", "This is city in the UK"}
+            };
+            foreach(KeyValuePair<string, string> definition in definitions)
+            {
+                Console.WriteLine($"{definition.Key} : {definition.Value}");
+            }
+
+
+            //SET
+            //UNION (SUMA), INTERSECTION (CZĘŚĆ WSPÓLNA), SET SUBSTRACTION (RÓŻNICA ZBIORÓW), SYMMETRIC DIFFERENCE (RÓŻNICA ARYTMETYCZNA - SUMA BEZ CZĘŚCI WSPÓLNEJ)
+            //VALUES IN SET ARE UNIQUE
+            HashSet<int> usedCoupons = new HashSet<int>();
+            usedCoupons.Add(100);
+            usedCoupons.Add(200);
+            if(usedCoupons.Contains(100))
+            {
+                Console.WriteLine("The set contains a value: 100");
+            }
+
+            //SORTEDSET
+            //IT IS A COMBINATION OF SORTEDLIST AND HASHSET
+            //USE THAT WHEN YOU NEED ORDERED COLLECTION DIFFERENT OBJECTS WITHOUT REPEATS
+            List<string> names = new List<string>()
+            {
+                "Marcin",
+                "Maria",
+                "Jakub",
+                "Albert",
+                "Liliana",
+                "Emilia",
+                "Marcin",
+                "Jakub",
+                "Janinca"
+            };
+            SortedSet<string> sorted = new SortedSet<string>(names, Comparer<string>.Create((a, b) => a.ToLower().CompareTo(b.ToLower())));
+            foreach(string name in sorted)
+            {
+                Console.WriteLine(name);
             }
 
             Console.ReadKey();
