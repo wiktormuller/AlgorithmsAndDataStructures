@@ -54,6 +54,7 @@ namespace AlgorithmsAndDataStructures.DataStructures
                     TraversePostOrder(Root, nodes);
                     break;
             }
+            return nodes;
         }
 
         public int GetHeight()

@@ -286,6 +286,7 @@ namespace AlgorithmsAndDataStructures
             Console.ReadKey();
         }
 
+        //ONE DIMENSION ARRAY
         public static void oneDimensionArray()  //NAME OF DAYS IN ACTUAL MONTH (CANNOT CHANGE LENGTH OF ANY ARRAY)
         {
             string[] days = new string[7];
@@ -303,6 +304,7 @@ namespace AlgorithmsAndDataStructures
             Console.WriteLine();
         }
 
+        //MULTI DIMENSION ARRAY
         public static void multiDimensionArray()   //MULTIPLICATION TABLE AND MAP OF GAME
         {
             int[,] results = new int[10, 10]; //[rows, columns]
@@ -343,6 +345,8 @@ namespace AlgorithmsAndDataStructures
             Console.ForegroundColor = ConsoleColor.Gray;
         }
 
+
+        //JAGGED ARRAY
         public static void jaggedArray()    //YEAR TRANSPORTATION SCHEDULE
         {
             //EXAMPLE
